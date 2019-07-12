@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// @route api/posts
+// @route GET api/posts
 // @desc  Test route
 // @access Public
 
