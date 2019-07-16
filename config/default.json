@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://Mensaiah:birapoms@ojumo-obipg.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "mytokensecret"
+  "jwtSecret": "mytokensecret",
+  "githubClientID": "86558f74eaa9cdfe508a",
+  "githubSecret": "14898e59324b61e1709aad2e16e22f1ef4c14d4c"
 }
