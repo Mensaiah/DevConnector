@@ -230,7 +230,7 @@ router.delete("/experience/:exp_id", auth, async (req, res) => {
 // @route PUT api/profile/education
 // @desc  Add profile education
 // @access private
-router.post(
+router.put(
   "/education",
   [
     auth,
@@ -252,7 +252,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(500).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
     const {
       school,
@@ -323,7 +323,7 @@ router.get("/github/:username", async (req, res) => {
     request(options, (error, response, body) => {
       if (error) console.log(error);
       if (response.statusCode !== 200) {
-        return res.status(400).json({ msg: "No Github profile found" });
+        return res.status(404).json({ msg: "No Github profile found" });
       }
       res.json(JSON.parse(body));
     });

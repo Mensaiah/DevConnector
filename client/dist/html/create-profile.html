@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://kit.fontawesome.com/1f18739455.js"></script>
+    <link rel="stylesheet" href="../css/style.min.css" />
+    <title>Welcome to the DevConnector</title>
+  </head>
+  <body>
+    <nav class="navbar bg-dark">
+      <h1>
+        <a href="dashboard.html"> <i class="fas fa-code">DevConnector </i> </a>
+      </h1>
+      <ul>
+        <li><a href="profiles.html">Developers</a></li>
+        <li><a href="post.html">Post</a></li>
+        <li>
+          <a href="dashboard.html"
+            ><i class="fas fa-user"></i
+            ><span class="hide-sm">Dashboard</span></a
+          >
+        </li>
+        <li>
+          <a href="login.html" onclick="logout()"
+            ><i class="fa fa-sign-out"></i><span class="hide-sm">Logout</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+    <section class="container">
+      <div class="alert alert-danger" hidden></div>
+      <h1 class="large text-primary">
+        Create Your Profile
+      </h1>
+      <p class="lead">
+        <i class="fas fa-connectdevelop"> </i>Let's get some information to make
+        your profile stand out
+      </p>
+      <small class="form-text">* = required field</small>
+      <form class="form">
+        <div class="form-group">
+          <select name="status" id="status">
+            <option value="0">* Select Professional Status</option>
+            <option value="Developer">Developer</option>
+            <option value="Junior Developer">Junior Developer</option>
+            <option value="Senior Developer">Senior Developer</option>
+            <option value="Manager">Manager</option>
+            <option value="Student or Learning">Student or Learning</option>
+            <option value="Instructor">Instructor or Teacher</option>
+            <option value="Intern">Intern</option>
+            <option value="Other">Other</option>
+          </select>
+          <small class="form-text"
+            >Give us an idea of where you are at in your career</small
+          >
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Company"
+            name="company"
+            id="company"
+          />
+          <small class="form-text"
+            >Could be your own company or one you work for</small
+          >
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Website"
+            name="website"
+            id="website"
+          />
+          <small class="form-text"
+            >Could be your own or a company website</small
+          >
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Location"
+            name="location"
+            id="location"
+          />
+          <small class="form-text"
+            >City & state suggested (eg. Boston, MA)</small
+          >
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="* Skills" name="skills" id="skills" />
+          <small class="form-text"
+            >Please use comma separated values (eg.
+            HTML,CSS,JavaScript,PHP)</small
+          >
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            placeholder="Github Username"
+            name="githubusername"
+            id="githubusername"
+          />
+          <small class="form-text"
+            >If you want your latest repos and a Github link, include your
+            username</small
+          >
+        </div>
+        <div class="form-group">
+          <textarea
+            placeholder="A short bio of yourself"
+            name="bio"
+            id="bio"
+          ></textarea>
+          <small class="form-text">Tell us a little about yourself</small>
+        </div>
+
+        <div class="my-2">
+          <button type="button" class="btn btn-light">
+            Add Social Network Links
+          </button>
+          <span>Optional</span>
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-twitter fa-2x"></i>
+          <input
+            type="text"
+            placeholder="Twitter URL"
+            name="twitter"
+            id="twitterurl"
+          />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-facebook fa-2x"></i>
+          <input
+            type="text"
+            placeholder="Facebook URL"
+            name="facebook"
+            id="facebookurl"
+          />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-youtube fa-2x"></i>
+          <input
+            type="text"
+            placeholder="YouTube URL"
+            name="youtube"
+            id="youtubeurl"
+          />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-linkedin fa-2x"></i>
+          <input
+            type="text"
+            placeholder="Linkedin URL"
+            name="linkedin"
+            id="linkedinurl"
+          />
+        </div>
+
+        <div class="form-group social-input">
+          <i class="fab fa-instagram fa-2x"></i>
+          <input
+            type="text"
+            placeholder="Instagram URL"
+            name="instagram"
+            id="instagramurl"
+          />
+        </div>
+        <input type="submit" class="btn btn-primary my-1 p-2" id="submit" />
+        <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
+      </form>
+      <script src="../js/app.js"></script>
+      <script src="../js/createProfile.js"></script>
+    </section>
+  </body>
+</html>

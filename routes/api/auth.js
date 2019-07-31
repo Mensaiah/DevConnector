@@ -29,7 +29,7 @@ router.post(
   "/",
   // Add User Validation
   [
-    check("email", "Please inclue a valid email").isEmail(),
+    check("email", "Please include a valid email").isEmail(),
     check("password", "Password is Required").exists()
   ],
 
