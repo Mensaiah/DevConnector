@@ -18,12 +18,35 @@ app.use("/api/posts", require("./routes/api/posts"));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/dist"));
 
+<<<<<<< HEAD
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
   });
+=======
+  connectClient();
+>>>>>>> d6dcf6d0cd1a7b2571be4c684cc0c90e673b3c23
 }
 
 const PORT = process.env.PORT || 5000;
+
+function connectClient() {
+  var link =
+    "index.html" ||
+    "add-experience.html" ||
+    "create-profile.html" ||
+    "add-education.html" ||
+    "dashboard.html" ||
+    "login.html" ||
+    "post.html" ||
+    "posts.html" ||
+    "post.html" ||
+    "profile.html" ||
+    "profiles.html" ||
+    "register.html";
+  app.get(`*`, (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "dist", "html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
