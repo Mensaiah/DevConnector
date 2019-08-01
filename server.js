@@ -24,7 +24,19 @@ if (process.env.NODE_ENV === "production") {
 const PORT = process.env.PORT || 5000;
 
 function connectClient() {
-  var link;
+  var link =
+    "index.html" ||
+    "add-experience.html" ||
+    "create-profile.html" ||
+    "add-education.html" ||
+    "dashboard.html" ||
+    "login.html" ||
+    "post.html" ||
+    "posts.html" ||
+    "post.html" ||
+    "profile.html" ||
+    "profiles.html" ||
+    "register.html";
   app.get(`/${link}`, (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "dist", "html", link));
   });
