@@ -38,7 +38,7 @@ function connectClient() {
     "profiles.html" ||
     "register.html";
   app.get(`/${link}`, (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "dist", "html", link));
+    res.sendFile(path.resolve(__dirname, "client", "dist", "html"));
   });
 }
 
