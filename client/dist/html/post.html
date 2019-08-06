@@ -57,7 +57,12 @@
             rows="3"
             placeholder="Comment on this post"
           ></textarea>
-          <input type="submit" class="btn btn-primary my-1" value="Submit" />
+          <input
+            type="submit"
+            class="btn btn-primary my-1"
+            value="Submit"
+            onclick="addComment(event, `${localStorage.clickedProfile}`)"
+          />
         </form>
       </div>
 

@@ -12,7 +12,7 @@ form.addEventListener("submit", event => {
   const to = formData.get("to");
   const description = formData.get("description");
 
-  newExp = {
+  const newExp = {
     title,
     location,
     company,
@@ -23,10 +23,13 @@ form.addEventListener("submit", event => {
   };
 
   fetchAPI("/profile/experience", "POST", newExp, ({ data, status }) => {
-    if (status === 500) {
+    if (status === 400) {
       showError(alert, data.errors.msg);
+    } else if (status === 401) {
+      checkToken(data.msg);
     } else if (status === 200) {
-      location.href = "dashboard.html";
+      console.log("I got here");
+      window.location.href = "dashboard.html";
     }
   });
 });

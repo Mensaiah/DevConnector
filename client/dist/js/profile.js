@@ -23,6 +23,8 @@ if (localStorage.clickedProfile === localStorage.userId) {
 fetchAPI("/profile" + correctUser, "get", null, ({ data, status }) => {
   if (status === 401) {
     location.href = "login.html";
+  } else if (status === 401) {
+    checkToken(data.msg);
   } else if (status === 200) {
     console.log(data);
     job.innerHTML = `${data.status} at ${data.company}`;
@@ -75,6 +77,8 @@ fetchAPI("/profile" + correctUser, "get", null, ({ data, status }) => {
         githubProfile.innerHTML = `<h2 class="text-primary my-1">
         <i class="fab fa-github"></i> Github Repos
       </h2><div class="repo bg-white my-1 p-1">${data.msg}</div> `;
+      } else if (status === 401) {
+        checkToken(data.msg);
       } else if (status === 200) {
         data.forEach(repo => {
           githubProfile.innerHTML += ` <div class="repo bg-white my-1 p-1">

@@ -9,6 +9,8 @@ if (localStorage.getItem("token")) {
 fetchAPI("/profile", "get", null, async ({ data, status }) => {
   if (status === 400) {
     location.href = "profiles.html";
+  } else if (status === 401) {
+    checkToken(data.msg);
   } else if (status === 200) {
     console.log(data);
     var skillNo = 1;

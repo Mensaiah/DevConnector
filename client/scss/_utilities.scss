@@ -80,7 +80,7 @@
   &.btn-primary {
     @include set-background($primary-color);
     &:hover {
-      background: lighten($primary-color, 5%);
+      background: lighten($primary-color, 10%);
     }
   }
   &.btn-dark {
@@ -100,20 +100,21 @@
     &:hover {
       background: lighten($danger-color, 5%);
     }
+    color: #fff;
   }
   &:hover {
     background: lighten($dark-color, 20%);
-    color: #fff;
+    // color: #fff;
   }
 }
 
 .alert {
   padding: 0.8rem;
-  margin: 1rem;
+  margin: 0;
   opacity: 0.9;
   background: $light-color;
   color: #333;
-
+  width: 100%;
   &.alert-primary {
     @include set-background($primary-color);
   }
@@ -128,6 +129,7 @@
   }
   &.alert-danger {
     @include set-background($danger-color);
+    color: #fff;
   }
 }
 

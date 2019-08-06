@@ -23,6 +23,8 @@ form.addEventListener("submit", event => {
   fetchAPI("/profile/education", "put", credentials, ({ data, status }) => {
     if (status === 400) {
       showError(alert, data.errors[0].msg);
+    } else if (status === 401) {
+      checkToken(data.msg);
     } else if (status === 200) {
       location.href = "dashboard.html";
     }

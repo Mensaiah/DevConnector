@@ -26,7 +26,7 @@ function fetchAPI(route, method, data, cbFunction) {
 
 // Show Error Div
 function showError(alert, message) {
-  alert = document.querySelector(".alert");
+  // alert = document.querySelector(".alert");
   alert.innerHTML = message;
   alert.hidden = false;
   setTimeout(() => {
@@ -34,11 +34,26 @@ function showError(alert, message) {
   }, 2000);
 }
 
+function ifUndefined(data) {
+  if (data == undefined) {
+    return "";
+  } else {
+    return data;
+  }
+}
+
+// Check Token
+function checkToken(data) {
+  if (data === "Token not valid") {
+    logout();
+  }
+}
+
 function checkIfCurrent(param) {
   if (param.current == true) {
     return "Current";
   } else {
-    return param.to;
+    return formatDate(param.to);
   }
 }
 
@@ -53,27 +68,27 @@ function getClickedId(event, clickedId, page) {
   }
 }
 
-function deleteOnClick(event, field, clickedId) {
+function deleteOnClick(event, area, field, clickedId, clickedId2, parentDiv) {
   event.preventDefault();
   fetchAPI(
-    `/profile/${field}/${clickedId}`,
+    `/${area}/${field}/${clickedId}/${clickedId2}`,
     "delete",
     null,
     ({ data, status }) => {
       if (status === 400) {
       } else {
-        location.href = "dashboard.html";
+        console.log(parentDiv);
+
+        document.querySelector(parentDiv).remove();
       }
     }
   );
 }
 
-function deleteUser(event, userId) {
-  alert(confirm("Are you sure you want do this?...It cant be undone "));
+function deleteUser() {
+  confirm("Are you sure you want do this?");
   fetchAPI("/profile", "delete", null, ({ data, status }) => {
-    event.preventDefault();
     logout();
-    location.href = "login.html";
   });
 }
 
@@ -81,6 +96,7 @@ function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("userId");
   localStorage.removeItem("clickedProfile");
+  location.href = "login.html";
 }
 
 function checkProfile(data) {
@@ -95,4 +111,36 @@ function checkProfile(data) {
     </p>`;
   }
 }
-// delete Exp and Edu
+
+function formatDate(thedate) {
+  const date = new Date(thedate);
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  const day = date.getDate();
+  const monthIndex = date.getMonth();
+  const year = date.getFullYear();
+
+  return day + " " + monthNames[monthIndex] + " " + year;
+}
+
+function ifUser(userId, user, id, id2, route, route2, div) {
+  if (userId == user) {
+    return `<button class = "btn btn-danger" onclick ='deleteOnClick(event,"${route}","${route2}", "${id}",  "${id2}",
+    "${div}")'><i class="fa fa-trash" aria-hidden ="true"></i></button>`;
+  } else {
+    return "";
+  }
+}

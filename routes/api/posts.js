@@ -132,7 +132,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
       post.likes.filter(like => like.user.toString() === req.user.id).length ===
       0
     ) {
-      return res.status(400).json({ msg: "Post user has not been liked" });
+      return res.status(400).json({ msg: "Post has not been liked" });
     }
     const removeIndex = post.likes
       .map(like => like.user.toString())
@@ -164,7 +164,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: error.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
     try {
       const user = await User.findById(req.user.id).select("-password");

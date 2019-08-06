@@ -17,20 +17,21 @@
   <body>
     <nav class="navbar bg-dark">
       <h1>
-        <a href="dashboard.html"> <i class="fas fa-code">DevConnector </i> </a>
+        <a href="dashboard.html"> <i class="fas fa-code"></i> DevConnector </a>
       </h1>
       <ul>
         <li><a href="profiles.html">Developers</a></li>
         <li><a href="post.html">Post</a></li>
         <li>
           <a href="dashboard.html"
-            ><i class="fas fa-user"></i
-            ><span class="hide-sm">Dashboard</span></a
+            ><i class="fas fa-user"></i>
+            <span class="hide-sm">Dashboard</span></a
           >
         </li>
         <li>
           <a href="login.html" onclick="logout()"
-            ><i class="fa fa-sign-out"></i><span class="hide-sm">Logout</span></a
+            ><i class="fa fa-sign-out"></i>
+            <span class="hide-sm">Logout</span></a
           >
         </li>
       </ul>
@@ -124,61 +125,63 @@
         </div>
 
         <div class="my-2">
-          <button type="button" class="btn btn-light">
+          <button type="button" class="btn btn-light socialBtn">
             Add Social Network Links
           </button>
           <span>Optional</span>
         </div>
+        <div class="socialDiv" hidden>
+          <div class="form-group social-input">
+            <i class="fab fa-twitter fa-2x"></i>
+            <input
+              type="text"
+              placeholder="Twitter URL"
+              name="twitter"
+              id="twitterurl"
+            />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-twitter fa-2x"></i>
-          <input
-            type="text"
-            placeholder="Twitter URL"
-            name="twitter"
-            id="twitterurl"
-          />
+          <div class="form-group social-input">
+            <i class="fab fa-facebook fa-2x"></i>
+            <input
+              type="text"
+              placeholder="Facebook URL"
+              name="facebook"
+              id="facebookurl"
+            />
+          </div>
+
+          <div class="form-group social-input">
+            <i class="fab fa-youtube fa-2x"></i>
+            <input
+              type="text"
+              placeholder="YouTube URL"
+              name="youtube"
+              id="youtubeurl"
+            />
+          </div>
+
+          <div class="form-group social-input">
+            <i class="fab fa-linkedin fa-2x"></i>
+            <input
+              type="text"
+              placeholder="Linkedin URL"
+              name="linkedin"
+              id="linkedinurl"
+            />
+          </div>
+
+          <div class="form-group social-input">
+            <i class="fab fa-instagram fa-2x"></i>
+            <input
+              type="text"
+              placeholder="Instagram URL"
+              name="instagram"
+              id="instagramurl"
+            />
+          </div>
         </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-facebook fa-2x"></i>
-          <input
-            type="text"
-            placeholder="Facebook URL"
-            name="facebook"
-            id="facebookurl"
-          />
-        </div>
-
-        <div class="form-group social-input">
-          <i class="fab fa-youtube fa-2x"></i>
-          <input
-            type="text"
-            placeholder="YouTube URL"
-            name="youtube"
-            id="youtubeurl"
-          />
-        </div>
-
-        <div class="form-group social-input">
-          <i class="fab fa-linkedin fa-2x"></i>
-          <input
-            type="text"
-            placeholder="Linkedin URL"
-            name="linkedin"
-            id="linkedinurl"
-          />
-        </div>
-
-        <div class="form-group social-input">
-          <i class="fab fa-instagram fa-2x"></i>
-          <input
-            type="text"
-            placeholder="Instagram URL"
-            name="instagram"
-            id="instagramurl"
-          />
-        </div>
         <input type="submit" class="btn btn-primary my-1 p-2" id="submit" />
         <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
       </form>

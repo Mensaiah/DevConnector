@@ -1,14 +1,20 @@
 const posts = document.querySelector(".posts");
+const alertDiv = document.querySelector(".alert");
+let postNum = 1;
 
 fetchAPI("/posts", "Get", null, ({ data, status }) => {
   if (status === 400) {
-    console.log(data);
+  } else if (status === 401) {
+    checkToken(data.msg);
   } else if (status === 200) {
     console.log(data);
 
     data.forEach(post => {
       posts.innerHTML += ` 
-      <div class="post bg-white my-1">
+      <!--Alert-->
+      <div class="alert alert-danger alert-${postNum}" hidden></div>
+    </div>
+      <div class="post bg-white my-1  p-1 post-${postNum}">
       
       <div>
         <a href="profile.html" onClick="getClickedId(event,
@@ -19,43 +25,65 @@ fetchAPI("/posts", "Get", null, ({ data, status }) => {
             src="${post.avatar}"
             alt=""
           />
-          <h4>${post.name}</h4>
+          <h4 class = "form-text">${post.name}</h4>
         </a>
       </div>
       <div class="my-1">
         ${post.text}
-        <button class="btn"onClick='likePost(event,"${post._id}")' >
-          <i class="fas fa-thumbs-up" ></i><span>${post.likes.length}</span>
+        <div>
+        
+        <div><strong> Posted On ${formatDate(post.date)}</strong></div>
+        <button class="btn"onClick='likePost("${post._id}", ${postNum})' >
+          <i class="fas fa-thumbs-up" ></i> <span class = 'like-${postNum} '>${
+        post.likes.length
+      }</span>
         </button>
-        <button class="btn" onClick='unlikePost(event,"${post._id}")'>
+        <button class="btn unlike" onClick='unlikePost("${
+          post._id
+        }", ${postNum})'>
           <i class="fas fa-thumbs-down"></i> 
         </button>
-        <a href="post.html" class="btn btn-primary py-1" onClick="getClickedId(event,
-            '${post._id}', 'post.html'); ">Discussion</a>
+        <a href="post.html" class="btn btn-primary my-1" onClick="getClickedId(event,
+            '${post._id}', 'post.html')">Discussion</a>
+        ${ifUser(
+          localStorage.userId,
+          post.user,
+          post._id,
+          "",
+          "posts",
+          "",
+          `.post-${postNum}`
+        )}
       </div>
-      <!--Alert-->
-      <div class="alertDiv alert-danger" hidden></div>
-    </div>`;
+      </div>
+      `;
+      postNum++;
     });
   }
 });
 
-function likePost(event, id) {
+function likePost(id, postNum) {
   fetchAPI(`/posts/like/${id}`, "PUT", null, ({ data, status }) => {
     if (status === 400) {
-      showError(alertDiv, data.msg);
-    } else {
-      location.href = "posts.html";
+      const postAlert = document.querySelector(`.alert-${postNum}`);
+      showError(postAlert, data.msg);
+    } else if (status === 200) {
+      const like = document.querySelector(`.like-${postNum}`);
+
+      like.textContent = data.length;
     }
   });
 }
 
-function unlikePost(event, id) {
+function unlikePost(id, postNum) {
   fetchAPI(`/posts/unlike/${id}`, "PUT", null, ({ data, status }) => {
     if (status === 400) {
-      showError(alertDiv, data.msg);
-    } else {
-      location.href = "posts.html";
+      const postAlert = document.querySelector(`.alert-${postNum}`);
+      showError(postAlert, data.msg);
+    } else if (status === 200) {
+      const like = document.querySelector(`.like-${postNum}`);
+
+      like.textContent = data.length;
     }
   });
 }
