@@ -49,6 +49,7 @@ function addComment(event, post_Id) {
       } else if (status === 401) {
         checkToken(data.msg);
       } else if (status === 200) {
+        document.querySelector("textarea").value = "";
         displayDiv(data);
         console.log(data);
       }

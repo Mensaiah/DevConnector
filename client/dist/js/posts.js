@@ -25,7 +25,7 @@ fetchAPI("/posts", "Get", null, ({ data, status }) => {
             src="${post.avatar}"
             alt=""
           />
-          <h4 class = "form-text">${post.name}</h4>
+          <h4>${post.name}</h4>
         </a>
       </div>
       <div class="my-1">
