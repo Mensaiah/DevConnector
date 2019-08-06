@@ -43,12 +43,12 @@ fetchAPI("/profile" + correctUser, "get", null, ({ data, status }) => {
     const name = data.user.name.split(" ");
     const firstName = name[0];
     bioHead.innerHTML = `${firstName}'s Bio`;
-    bio.innerHTML = data.bio;
+    bio.innerHTML = ifUndefined(data.bio);
 
     data.experience.forEach(experience => {
       exp.innerHTML = "";
       exp.innerHTML += `<h3>${experience.title}</h3>
-      <p>${experience.from} - ${checkIfCurrent(experience)}}</p>
+      <p>${formatDate(experience.from)} - ${checkIfCurrent(experience)}</p>
       <p><strong>Company: </strong> ${experience.company}</p>
       <p>
         <strong>Description: </strong> ${experience.description}
@@ -59,7 +59,7 @@ fetchAPI("/profile" + correctUser, "get", null, ({ data, status }) => {
     data.education.forEach(education => {
       edu.innerHTML = "";
       edu.innerHTML += ` <h3>${education.school}</h3>
-      <p>${education.from} - ${checkIfCurrent(education)}</p>
+      <p>${formatDate(education.from)} - ${checkIfCurrent(education)}</p>
       <p><strong>Degree: </strong> ${education.degree}</p>
       <p><strong>Field Of Study: </strong> ${education.fieldofstudy}</p>
       <p>
@@ -85,7 +85,7 @@ fetchAPI("/profile" + correctUser, "get", null, ({ data, status }) => {
           <div>
             <h4><a href="${repo.html_url}">${repo.name}</a></h4>
             <p>
-             ${repo.description}
+             ${ifUndefined(repo.description)}
             </p>
           </div>
           <div>
